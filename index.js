@@ -13,7 +13,7 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5173",  // exact frontend URL
+  origin: "https://frontend-brown-eta-96.vercel.app",  // exact frontend URL
   credentials: true,                // allow cookies / auth headers
 }))
 // Routes
