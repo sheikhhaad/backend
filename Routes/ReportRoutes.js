@@ -8,7 +8,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 router.post("/upload",IsLoggin, upload.single("file"), uploadReport);
-router.get("/:id",IsLoggin, getReportById);
 router.get("/all", getReports);
+router.get("/:id", getReportById);
 
 export default router;

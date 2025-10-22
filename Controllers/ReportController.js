@@ -1,5 +1,6 @@
 import cloudinary from "../config/Cloundinary.js";
 import Report from "../models/Report.js";
+import mongoose from "mongoose";
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import fetch from "node-fetch";
@@ -12,6 +13,8 @@ export const uploadReport = async (req, res) => {
     if (!req.file) return res.status(400).json({ error: "No file provided" });
 
     const { buffer, mimetype } = req.file;
+    // console.log();
+    
 
     // 1. Upload to Cloudinary
     const uploadResult = await new Promise((resolve, reject) => {
@@ -69,7 +72,6 @@ export const getReports = async (req, res) => {
   res.json(reports);
 };
 
-import mongoose from "mongoose";
 
 export const getReportById = async (req, res) => {
   const { id } = req.params;
@@ -78,6 +80,9 @@ export const getReportById = async (req, res) => {
   }
 
   const report = await Report.findOne({ userId :id});
+
+  console.log(id,"re[orts");
+  
   if (!report) return res.status(404).json({ error: "Report not found" });
 
   res.json(report);

@@ -13,14 +13,13 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-  origin: "https://frontend-brown-eta-96.vercel.app",  // exact frontend URL
+  origin: "http://localhost:5173",  // exact frontend URL
   credentials: true,                // allow cookies / auth headers
 }))
 // Routes
-app.use("/auth", router);
+app.use("/api/auth", router);
 app.use("/api",  userAuthenticate);
 app.use("/api/reports", ReportRoutes);
-app.use("/reports", ReportRoutes);
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
